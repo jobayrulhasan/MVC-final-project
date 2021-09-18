@@ -1,0 +1,74 @@
+﻿@model FinalPorjectDatabaseFirst3.Models.BookingDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BookingDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SeatNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SeatNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerMobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerMobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Booking.CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Booking.CustomerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bus.BusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bus.BusName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Schedule.BusStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Schedule.BusStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ScheduleDetail.SeatNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ScheduleDetail.SeatNo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BookingDetailsId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

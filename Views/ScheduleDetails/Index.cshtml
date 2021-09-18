@@ -1,0 +1,51 @@
+﻿@model IEnumerable<FinalPorjectDatabaseFirst3.Models.ScheduleDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SeatNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ScheduleStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bus.BusName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Schedule.BusStatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SeatNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ScheduleStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bus.BusName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Schedule.BusStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ScheduleDetailsId }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ScheduleDetailsId }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ScheduleDetailsId }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,87 @@
+﻿@{
+    var oTblUser = (FinalPorjectDatabaseFirst3.Models.TblUser)Session["TblUsers"];
+    var listTblUserRole = (List<FinalPorjectDatabaseFirst3.Models.TblUserRole>)Session["TblUserRoles"];
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+
+                    @if (Session["TblUsers"] != null && listTblUserRole.Where(o => o.PageName == "Buses" && o.IsRead == true).FirstOrDefault() != null)
+                    {
+                        <li>@Html.ActionLink("Bus", "Index", "Buses")</li>
+                    }
+                    @if (Session["TblUsers"] != null && listTblUserRole.Where(o => o.PageName == "Routes" && o.IsRead == true).FirstOrDefault() != null)
+                    {
+                        <li>@Html.ActionLink("Route", "Index", "Routes")</li>
+                    }
+                    @if (Session["TblUsers"] != null && oTblUser.UserType == FinalPorjectDatabaseFirst3.Libs.Utilities.UserType.SuperAdmin.ToString())
+                    {
+                        <li>@Html.ActionLink("Booking", "Index", "Bookings")</li>
+                    }
+                    @if (Session["TblUsers"] != null && listTblUserRole.Where(o => o.PageName == "Buses" && o.IsRead == true).FirstOrDefault() != null)
+                    {
+                        <li>@Html.ActionLink("BookingDetail", "Index", "BookingDetails")</li>
+                    }
+                    @if (Session["TblUsers"] != null && listTblUserRole.Where(o => o.PageName == "Buses" && o.IsRead == true).FirstOrDefault() != null)
+                    {
+                        <li>@Html.ActionLink("Schedule", "Index", "Schedules")</li>
+                    }
+                    @if (Session["TblUsers"] != null && listTblUserRole.Where(o => o.PageName == "Buses" && o.IsRead == true).FirstOrDefault() != null)
+                    {
+                        <li>@Html.ActionLink("ScheduleDetail", "Index", "ScheduleDetails")</li>
+                    }
+                    @if (Session["TblUsers"] != null && listTblUserRole.Where(o => o.PageName == "Buses" && o.IsRead == true).FirstOrDefault() != null)
+                    {
+                        <li>@Html.ActionLink("User", "Index", "Users")</li>
+                    }
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Session["TblUsers"] != null)
+                    {
+                        <li><a href="#"><span class="glyphicon glyphicon-user" style="color:white"></span> Welcome, @oTblUser.UserName</a></li>
+                        <li><a href="/Home/Logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="/Home/Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    }
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <img style="width:500px;height:300px; margin-left:450px;padding-top:30px" src="~/Img/Bus2-removebg-preview.png" />
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer style="color:black" class="text-center">
+            <p>&copy; @DateTime.Now.Year - IsDB-IT SCHOLARSHIP <small>final project</small></p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,80 @@
+﻿@model FinalPorjectDatabaseFirst3.Models.BookingDetail
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>BookingDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SeatNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SeatNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerMobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerMobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Booking.CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Booking.CustomerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bus.BusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bus.BusName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Schedule.BusStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Schedule.BusStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ScheduleDetail.SeatNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ScheduleDetail.SeatNo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

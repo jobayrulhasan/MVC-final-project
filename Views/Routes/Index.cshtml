@@ -1,0 +1,74 @@
+﻿@model IEnumerable<FinalPorjectDatabaseFirst3.Models.Route>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listTblUserRole = (List<FinalPorjectDatabaseFirst3.Models.TblUserRole>)Session["TblUserRoles"];
+}
+
+<h2>Index</h2>
+
+<p>
+    @if (listTblUserRole.Where(o => o.PageName == "Routes" && o.IsCreate == true).FirstOrDefault() != null)
+    {
+        @Html.ActionLink("Create New", "Create")
+    }
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RouteName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartPoint)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndPoint)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bus.BusName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RouteName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartPoint)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndPoint)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bus.BusName)
+            </td>
+            <td>
+                @if (listTblUserRole.Where(o => o.PageName == "Routes" && o.IsUpdate == true).FirstOrDefault() != null)
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.RouteId }, new { @class = "btn btn-info" })
+                }
+                |
+                @if (listTblUserRole.Where(o => o.PageName == "Routes" && o.IsRead == true).FirstOrDefault() != null)
+                {
+                    @Html.ActionLink("Details", "Details", new { id = item.RouteId }, new { @class = "btn btn-warning" })
+                }
+                |
+                @if (listTblUserRole.Where(o => o.PageName == "Routes" && o.IsDelete == true).FirstOrDefault() != null)
+                {
+                    @Html.ActionLink("Delete", "Delete", new { id = item.RouteId }, new { @class = "btn btn-danger" })
+                }
+            </td>
+        </tr>
+    }
+</table>

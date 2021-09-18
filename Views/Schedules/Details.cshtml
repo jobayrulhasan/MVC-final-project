@@ -1,0 +1,74 @@
+﻿@model FinalPorjectDatabaseFirst3.Models.Schedule
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Schedule</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartureTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DepartureTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArrivalTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArrivalTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActualDepartureTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActualDepartureTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActualArrivalTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActualArrivalTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ScheduleCancel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ScheduleCancel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BusStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BusStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Route.RouteName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Route.RouteName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ScheduleId }, new { @class = "btn btn-warning" }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

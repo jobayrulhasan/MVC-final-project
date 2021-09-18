@@ -1,0 +1,98 @@
+﻿@model FinalPorjectDatabaseFirst3.Models.Booking
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Booking</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerMobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerMobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookedStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookedStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CancelDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CancelDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReturnAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReturnAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReturnStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReturnStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BusId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BusId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ScheduleId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ScheduleId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BookingId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

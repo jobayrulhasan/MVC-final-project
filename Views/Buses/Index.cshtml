@@ -1,0 +1,108 @@
+﻿@*@model IEnumerable<FinalPorjectDatabaseFirst3.Models.Bus>*@
+@model  PagedList.IPagedList<FinalPorjectDatabaseFirst3.Models.Bus>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listTblUserRole = (List<FinalPorjectDatabaseFirst3.Models.TblUserRole>)Session["TblUserRoles"];
+}
+
+<h2>Index</h2>
+<div class="btn btn-success">
+    @Html.ActionLink("Create New", "Create")
+</div>
+
+<p>
+    @if (listTblUserRole.Where(o => o.PageName == "Bueses" && o.IsCreate == true).FirstOrDefault() != null)
+    {
+
+    }
+</p>
+@using (Html.BeginForm("Index", "Buses", FormMethod.Get))
+{
+    <p>
+        <span style="color:salmon;font-size:15px">Find by name:</span> @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </p>}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Bus Name</th>
+            <th>Bus Type</th>
+            <th>Number of Seat</th>
+            <th>Licence No.</th>
+            <th>Fitness Status</th>
+        </tr>
+    </thead>
+    @*<tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BusName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BusType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOfSeat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LicenseNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FitnessStatus)
+        </th>
+        <th></th>
+    </tr>*@
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoOfSeat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LicenseNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FitnessStatus)
+            </td>
+
+            <td>
+                @if (listTblUserRole.Where(o => o.PageName == "Buses" && o.IsUpdate == true).FirstOrDefault() != null)
+                {
+                    <a href="/Buses/Edit?id=@item.BusId" class="btn btn-primary">Edit</a>
+
+                }
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.BusId },new {@class="btn btn-primary"}) |*@
+
+                @if (listTblUserRole.Where(o => o.PageName == "Buses" && o.IsRead == true).FirstOrDefault() != null)
+                {
+                    @Html.ActionLink("Details", "Details", new { id = item.BusId }, new { @class = "btn btn-warning" })
+                }
+                @if (listTblUserRole.Where(o => o.PageName == "Buses" && o.IsDelete == true).FirstOrDefault() != null)
+                {
+                    @Html.ActionLink("Delete", "Delete", new { id = item.BusId }, new { @class = "btn btn-danger" })
+                }
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of
+@Model.PageCount
+@Html.PagedListPager(Model, page => @Url.Action("Index",
+ new
+ {
+     page,
+     sortOrder = ViewBag.CurrentSort,
+     currentFilter =
+ViewBag.CurrentFilter
+ }))

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<FinalPorjectDatabaseFirst3.Models.Schedule>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartureTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArrivalTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActualDepartureTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActualArrivalTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ScheduleCancel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BusStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Route.RouteName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartureTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArrivalTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActualDepartureTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActualArrivalTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ScheduleCancel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BusStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Route.RouteName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ScheduleId },new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ScheduleId }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ScheduleId }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

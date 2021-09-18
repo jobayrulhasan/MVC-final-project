@@ -1,0 +1,63 @@
+﻿@model FinalPorjectDatabaseFirst3.Models.Route
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listTblUserRole = (List<FinalPorjectDatabaseFirst3.Models.TblUserRole>)Session["TblUserRoles"];
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Route</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RouteName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RouteName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartPoint)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartPoint)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndPoint)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndPoint)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bus.BusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bus.BusName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (listTblUserRole.Where(o => o.PageName == "Buses" && o.IsUpdate == true).FirstOrDefault() != null)
+    {
+        <a href="/Routes/Edit?id=@Model.RouteId" class="btn btn-info">Edit</a>
+    }
+    @Html.ActionLink("Back to List", "Index")
+</p>
